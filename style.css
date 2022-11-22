@@ -1,0 +1,163 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: var(--ff-poppins);
+}
+
+:root {
+  --ff-poppins: 'Poppins', sans-serif;
+
+  --fw-200: 200;
+  --fw-400: 400;
+  --fw-600: 600;
+
+  --clr-accent-red: 0 78% 62%;
+  --clr-accent-cyan: 180 62% 55%;
+  --clr-accent-orange: 34 97% 64%;
+  --clr-accent-blue: 212 86% 64%;
+
+  --clr-heading: 234 12% 34%;
+  --clr-body: 229 6% 66%;
+  --clr-light: 0 0% 98%;
+
+  --fs-300: 1.3rem;
+  --fs-400: 1.5rem;
+  --fs-600: 2rem;
+  --fs-900: 2.4rem;
+}
+
+@media (min-width: 45em) {
+  :root {
+    --fs-900: 3.6rem;
+  }
+}
+
+.container {
+  max-width: 110rem;
+  padding-inline: 2rem;
+  margin:0 auto;
+}
+
+
+body {
+  padding-top: 5rem;
+  background: hsl(var(--clr-light));
+  color: hsl(var(--clr-body));
+
+}
+
+
+.hero-title {
+  font-size: var(--fs-900);
+  font-weight: var(--fw-600);
+  color: hsl(var(--clr-heading));
+  text-align: center;
+  /* margin-bottom: clamp(1vw, 2rem, 3vw); */
+  margin-bottom: min(5vw, 2rem);
+}
+
+.hero-title span {
+  font-weight: var(--fw-200);
+}
+
+main > p {
+  text-align: center;
+  font-size: var(--fs-400);
+  color: hsl(var(--clr-body));
+  max-width: 60ch;
+  margin: auto;
+  padding-inline: 2rem;
+}
+
+.features {
+  --flow-gap: 2rem;
+  display: grid;
+  grid-template-areas: 'super'
+                        'team'
+                        'karma'
+                        'calculator';
+  gap: var(--flow-gap);
+  padding-inline: 2rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.features div {
+  padding: 3rem;
+  border-radius: 1rem;
+  background: hsl(0 0% 100%);
+  box-shadow: 0 10px 15px 2px hsl(var(--clr-body) / 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.features div::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: var(--clr-accent);
+}
+
+.cyan {
+  --clr-accent: hsl(var(--clr-accent-cyan));
+  grid-area: super;
+}
+
+.red {
+  --clr-accent: hsl(var(--clr-accent-red));
+  grid-area: team;
+}
+
+.orange {
+  --clr-accent: hsl(var(--clr-accent-orange));
+  grid-area: karma;
+}
+
+.blue {
+  --clr-accent: hsl(var(--clr-accent-blue));
+  grid-area: calculator;
+}
+
+.features div > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.features h2 {
+  font-size: var(--fs-600);
+  color: hsl(var(--clr-heading));
+  font-weight: var(--fw-600);
+}
+
+.features p {
+  font-size: var(--fs-300);
+  padding-right: 2rem;
+  line-height: 1.6;
+}
+
+.features img {
+  float: right;
+}
+
+
+@media (min-width:45em) {
+  .features {
+    --flow-gap: 3rem;
+    grid-template-areas: '. team .'
+                          ' super team calculator'
+                          'super karma calculator'
+                          '.karma .';
+    margin-bottom: 10rem;
+
+  }
+}
